@@ -173,7 +173,7 @@ class Browser(QMainWindow):
         self.setWindowTitle(f"{title} - Goose Browser")
 
     def info(self):
-        QMessageBox.about(self, "Goose Browser", "Самый лучший браузер в мире!\nСоздан by Neor")
+        QMessageBox.about(self, "Goose Browser", "Самый лучший браузер в мире!\n")
 
     def nav_home(self):
         self.tab_widget.currentWidget().setUrl(QUrl("https://google.com"))

@@ -10,7 +10,7 @@ import re  # регулярные выражения для очистки те�
 def load():
     data = {'intent': [], 'response': []}  # словарь для хранения данных
 
-    with open("model.txt", "r", encoding="utf-8") as file:  # открываем файл с данными
+    with open("auto_school.txt", "r", encoding="utf-8") as file:  # открываем файл с данными
         for line in file:  # читаем файл построчно
             row = line.split("|")  # разбиваем строку на массив
             data['intent'] += [row[0]]  # добавляем вопрос в словарь
@@ -27,7 +27,7 @@ def cleaner(text):
     return text
 
 
-def train_test_split(data, validation_split=0.2):  # функция разбиения выборки на обучающую и тестовую. validation_split - доля тестовой выборки
+def train_test_split(data, validation_split=0.5):  # функция разбиения выборки на обучающую и тестовую. validation_split - доля тестовой выборки
     size = len(data['intent'])  # размер выборки
     indices = np.arange(size)  # создаем массив индексов
     np.random.shuffle(indices)  # перемешиваем массив индексов
@@ -57,7 +57,9 @@ def model():
     while True:
         intent = input(">>> ").replace("?", "").strip()
         intents = [intent]
+
         predicted = pipeline.predict(intents)  # предсказываем результаты тестовой выборки
+        print(predicted)
         print(predicted[0].strip())  # выводим результат
 
 
